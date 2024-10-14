@@ -1,9 +1,7 @@
 "use client";
 import { signIn, useSession } from "next-auth/react";
 import Image from "next/image";
-import LinkedInLogo from "@/assets/LinkedInICO.webp";
-import GithubLogo from "@/assets/GitHubICO.png";
-import GoogleLogo from "@/assets/GoogleICO.png";
+
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import MyLoader from "@/Components/MyLoader";
@@ -11,7 +9,6 @@ const Login = () => {
   const { data } = useSession();
   const router = useRouter();
   useEffect(() => {
-
     if (data) {
       router.push("/Settings");
     }
@@ -33,7 +30,7 @@ const Login = () => {
             >
               <Image
                 className="rounded-full"
-                src={GithubLogo}
+                src={"GithubLogo"}
                 alt="GithubLogo"
                 width={40}
                 height={40}
@@ -46,7 +43,7 @@ const Login = () => {
             >
               <Image
                 className="rounded-full"
-                src={GoogleLogo}
+                src={"GoogleLogo"}
                 alt="GoogleLogo"
                 width={40}
                 height={40}
@@ -59,7 +56,7 @@ const Login = () => {
             >
               <Image
                 className="rounded-full"
-                src={LinkedInLogo}
+                src={"LinkedInLogo"}
                 alt="LinkedInLogo"
                 width={40}
                 height={40}

@@ -1,12 +1,11 @@
 "use client";
-import ChaiGIF from "@/assets/ChaiGIF_2.gif";
 import { Upload, DollarSign, Lightbulb } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRef, useEffect } from "react";
 import Typed from "typed.js";
 
-const page = () => {
+const Page = () => {
   const el = useRef(null);
   useEffect(() => {
     const typed = new Typed(el.current, {
@@ -36,7 +35,7 @@ const page = () => {
           <span>
             {" "}
             <Image
-              src={ChaiGIF}
+              src={"ChaiGIF"}
               alt="Logo"
               width={45}
               height={45}
@@ -123,4 +122,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

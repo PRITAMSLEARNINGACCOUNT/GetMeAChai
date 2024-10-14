@@ -3,7 +3,8 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import MyLoader from "@/Components/MyLoader";
-const page = () => {
+
+const Page = () => {
   const { data } = useSession();
   const router = useRouter();
   const [FormDetails, setFormDetails] = useState({
@@ -149,4 +150,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
