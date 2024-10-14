@@ -22,6 +22,13 @@ const Navbar = () => {
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
             <span className="self-center flex items-center gap-3 text-2xl font-semibold whitespace-nowrap dark:text-white">
+              <Image
+                src="/ChaiGIF_2.gif"
+                alt="Logo"
+                width={40}
+                height={40}
+                className="rounded-full"
+              />
               GetMeAChai
             </span>
           </Link>
@@ -75,20 +82,20 @@ const Navbar = () => {
               aria-labelledby="dropdownDefaultButton"
             >
               <li>
-                <a
-                  // href={`/${data.user.username}`}
+                <Link
+                  href={`/${data?.user?.username}`}
                   className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                 >
                   My Page
-                </a>
+                </Link>
               </li>
               <li>
-                <a
+                <Link
                   href="/Settings"
                   className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                 >
                   Profile Settings
-                </a>
+                </Link>
               </li>
               <li>
                 <button

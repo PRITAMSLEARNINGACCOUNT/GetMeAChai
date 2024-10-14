@@ -1,10 +1,27 @@
 "use client";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import fetchData from "@/server/FetchData";
-const page = ({ params }) => {
-  fetchData(params);
+import Error from "next/error";
 
-  return <div>page</div>;
+const Page = ({ params }) => {
+  const [val, setsuccess] = useState(false);
+  async function handle() {
+    let { success } = await fetchData(params);
+    if (success) {
+      setsuccess(true);
+    }
+  }
+  useEffect(() => {
+    handle();
+  }, []);
+
+  return val ? (
+    <div>
+      <h1>Success</h1>
+    </div>
+  ) : (
+    <Error statusCode={404} />
+  );
 };
 
-export default page;
+export default Page;

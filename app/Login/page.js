@@ -28,39 +28,39 @@ const Login = () => {
               className="text-xl flex gap-3 items-center bg-slate-900 p-5 rounded-full"
               onClick={() => signIn("github")}
             >
-              {/* <Image
+              <Image
                 className="rounded-full"
-                src={"GithubLogo"}
+                src="/GithubICO.png"
                 alt="GithubLogo"
                 width={40}
                 height={40}
-              /> */}
+              />
               Sign In Using Github
             </button>
             <button
               className="text-xl flex gap-3 items-center bg-slate-900 p-5 rounded-full"
               onClick={() => signIn("google")}
             >
-              {/* <Image
+              <Image
                 className="rounded-full"
-                src={"GoogleLogo"}
+                src="/GoogleICO.png"
                 alt="GoogleLogo"
                 width={40}
                 height={40}
-              /> */}
+              />
               Sign In Using Google
             </button>
             <button
               className="text-xl flex items-center gap-3 bg-slate-900 p-5 rounded-full"
               onClick={() => signIn("linkedin")}
             >
-              {/* <Image
+              <Image
                 className="rounded-full"
-                src={"LinkedInLogo"}
+                src="/LinkedInICO.webp"
                 alt="LinkedInLogo"
                 width={40}
                 height={40}
-              /> */}
+              />
               Sign In Using LinkedIn
             </button>
           </>

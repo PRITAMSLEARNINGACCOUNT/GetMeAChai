@@ -3,9 +3,11 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import MyLoader from "@/Components/MyLoader";
+import { toast } from "react-toastify";
 
 const Page = () => {
   const { data } = useSession();
+  const [FormLoading, setFormLoading] = useState(false);
   const router = useRouter();
   const [FormDetails, setFormDetails] = useState({
     name: undefined,
@@ -26,19 +28,7 @@ const Page = () => {
     //   router.push("/");
     // }
   }, [data]);
-  async function MyForm(FormData) {
-    const UpdatedUser = await handleFormSubmit(FormData, data.user?.username);
-    if (UpdatedUser) {
-      setFormDetails({
-        ...FormDetails,
-        name: UpdatedUser.name,
-        username: UpdatedUser.username,
-        email: UpdatedUser.email,
-        UPI_ID: UpdatedUser.UPI_ID,
-      });
-      router.push("/Settings");
-    }
-  }
+
   function HandleChange(e) {
     setFormDetails({ ...FormDetails, [e.target.name]: e.target.value });
   }
@@ -59,13 +49,25 @@ const Page = () => {
             <div>
               <form
                 onSubmit={async (e) => {
+                  setFormLoading(true);
                   e.preventDefault();
-
-                  const MyFormData = new FormData(e.target);
-                  let FormResponse = await fetch("/api/HandleFormSubmit", {
+                  const MyFormData = new FormData();
+                  MyFormData.append("name", FormDetails.name);
+                  MyFormData.append("username", FormDetails.username);
+                  MyFormData.append("email", FormDetails.email);
+                  MyFormData.append("UPI_ID", FormDetails.UPI_ID);
+                  MyFormData.append("Profilepic", e.target.Profilepic.files[0]);
+                  MyFormData.append("Coverpic", e.target.Coverpic.files[0]);
+                  let Response = await fetch("/api/HandleFormSubmit", {
                     method: "POST",
                     body: MyFormData,
                   });
+                  Response = await Response.json();
+                  console.log(Response);
+                  if (Response.success) {
+                    toast.success("Form Updated Successfully");
+                    router.push("/");
+                  }
                 }}
                 className="flex flex-col md:w-[50%] mx-auto items-center gap-3"
               >
@@ -99,8 +101,9 @@ const Page = () => {
                   name="email"
                   id="email"
                   value={FormDetails.email}
-                  className="rounded-md md:w-[50%] w-[70%] bg-slate-600 disabled:bg-slate-900 text-white p-3"
+                  className="rounded-md md:w-[50%] w-[70%] bg-slate-600 disabled:bg-slate-900 disabled:cursor-not-allowed text-white p-3"
                   onChange={HandleChange}
+                  disabled
                 />
                 <label className="text-lg" htmlFor="UPI_ID">
                   UPI ID
@@ -134,11 +137,12 @@ const Page = () => {
                   className="rounded-md md:w-[50%] w-[70%] bg-slate-600 text-white p-3"
                 />
                 <button
+                  disabled={FormLoading}
                   type="submit"
-                  className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800"
+                  className="relative inline-flex items-center justify-center p-0.5 mb-2 me-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 w-32"
                 >
                   <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                    Update Profile
+                    {FormLoading ? <MyLoader /> : "Update Profile"}
                   </span>
                 </button>
               </form>

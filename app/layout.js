@@ -3,7 +3,8 @@ import "./globals.css";
 import Navbar from "@/Components/Navbar";
 import Footer from "@/Components/Footer";
 import SessionWrapper from "@/SessionWrapper";
-
+import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -26,7 +27,21 @@ export default function RootLayout({ children }) {
       <SessionWrapper>
         <body className="bg-[#000000] bg-[radial-gradient(#ffffff33_1px,#00091d_1px)] bg-[size:20px_20px]">
           <Navbar />
-          <div className="min-h-[87vh] text-white">{children}</div>
+          <div className="min-h-[87vh] text-white">
+            <ToastContainer
+              position="top-right"
+              autoClose={2000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="light"
+            />
+            {children}
+          </div>
           <Footer />
         </body>
       </SessionWrapper>

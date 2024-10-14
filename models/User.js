@@ -9,22 +9,27 @@ const UserSchema = new mongoose.Schema(
     email: {
       type: String,
       required: true,
+      unique: true,
     },
     username: {
       type: String,
       required: true,
+      unique: true,
     },
     Coverpic: {
       type: String,
       default: null,
+      unique: true,
     },
     Profilepic: {
       type: String,
       default: null,
+      unique: true,
     },
     UPI_ID: {
       type: String,
       default: null,
+      unique: true,
     },
   },
   {

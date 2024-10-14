@@ -34,13 +34,13 @@ const Page = () => {
           Get Me A Chai{" "}
           <span>
             {" "}
-            {/* <Image
-              src={"ChaiGIF"}
+            <Image
+              src="/ChaiGIF_2.gif"
               alt="Logo"
               width={45}
               height={45}
               className="rounded-full"
-            /> */}
+            />
           </span>
         </h1>{" "}
         <div className="text-center p-5 md:p-0 flex flex-col gap-3">
