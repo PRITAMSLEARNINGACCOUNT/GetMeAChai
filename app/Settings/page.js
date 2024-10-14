@@ -57,7 +57,15 @@ const page = () => {
             </h1>
             <div>
               <form
-                action="/api/HandleFormSubmit"
+                onSubmit={async (e) => {
+                  e.preventDefault();
+
+                  const MyFormData = new FormData(e.target);
+                  let FormResponse = await fetch("/api/HandleFormSubmit", {
+                    method: "POST",
+                    body: MyFormData,
+                  });
+                }}
                 className="flex flex-col md:w-[50%] mx-auto items-center gap-3"
               >
                 <label className="text-lg" htmlFor="name">

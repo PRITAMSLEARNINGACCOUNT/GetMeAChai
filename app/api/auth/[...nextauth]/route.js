@@ -34,6 +34,15 @@ export const authOptions = NextAuth({
           };
         }
       },
+      async clientCallback(req, res) {
+        const params = client.callbackParams(req);
+        const tokenSet = await client.callback(
+          "http://localhost:3000/callback",
+          params
+        );
+        console.log("Received and validated tokens %j", tokenSet);
+        res.end("success");
+      },
     }),
   ],
   secret: process.env.NEXT_AUTH_SECRET,
