@@ -33,7 +33,7 @@ async function MainHandler(req, res) {
   //   coverPic.stream().pipe(coverPicStream);
   // }
 
-  return NextResponse.redirect(process.env.PRODUCTION_URL);
+  return NextResponse.redirect(process.env.NEXT_PUBLIC_URL);
 }
 
 export { MainHandler as POST };
