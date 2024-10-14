@@ -12,7 +12,7 @@ async function MainHandler(req, res) {
   const coverPic = formData.get("Coverpic");
 
   // Define the directory to save the files
-  const uploadDir = path.join(process.cwd(), "./assets/TemporaryImages");
+  const uploadDir = path.join(process.cwd(), "./public/TemporaryImages");
 
   // Ensure the upload directory exists
   if (!fs.existsSync(uploadDir)) {

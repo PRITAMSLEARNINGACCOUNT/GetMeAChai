@@ -2,7 +2,6 @@
 import { useState } from "react";
 import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
-import ChaiGIF from "@/assets/ChaiGIF_2.gif";
 import Image from "next/image";
 import { Menu, X } from "lucide-react";
 
@@ -23,13 +22,6 @@ const Navbar = () => {
             className="flex items-center space-x-3 rtl:space-x-reverse"
           >
             <span className="self-center flex items-center gap-3 text-2xl font-semibold whitespace-nowrap dark:text-white">
-              <Image
-                src={ChaiGIF}
-                alt="Logo"
-                width={40}
-                height={40}
-                className="rounded-full"
-              />
               GetMeAChai
             </span>
           </Link>
