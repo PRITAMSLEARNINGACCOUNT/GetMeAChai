@@ -99,6 +99,8 @@ const Page = ({ params }) => {
 
   async function handle() {
     let { success, data } = await fetchData(params);
+    console.log("Data", data);
+
     if (success) {
       setSuccessfull(true);
       setUserdata({ ...data });
@@ -120,7 +122,7 @@ const Page = ({ params }) => {
     }
   }, [Userdata]);
 
-  return Successfull && !Loading ? (
+  return Successfull ? (
     <div className="flex flex-col">
       <Modal
         Hidden={ShowModal}
