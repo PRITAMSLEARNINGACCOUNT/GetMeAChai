@@ -1,6 +1,8 @@
 "use server";
 import User from "@/models/User";
+import { connectDB } from "./ConnectDB";
 async function fetchData({ username }) {
+  await connectDB();
   let FindUser = await User.findOne({ username: username });
   if (FindUser) {
     return {
