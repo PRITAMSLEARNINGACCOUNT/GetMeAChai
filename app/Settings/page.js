@@ -24,9 +24,9 @@ const Page = () => {
       UPI_ID: data?.user?.UPI_ID,
     });
     setLoading(false);
-    // if (!data) {
-    //   router.push("/");
-    // }
+    if (!data) {
+      router.push("/");
+    }
   }, [data]);
 
   function HandleChange(e) {
@@ -65,8 +65,8 @@ const Page = () => {
                   Response = await Response.json();
                   console.log(Response);
                   if (Response.success) {
-                    toast.success("Form Updated Successfully");
-                    router.push("/");
+                    toast.success("Profile Updated Successfully");
+                    window.location.href = `/`;
                   }
                 }}
                 className="flex flex-col md:w-[50%] mx-auto items-center gap-3"

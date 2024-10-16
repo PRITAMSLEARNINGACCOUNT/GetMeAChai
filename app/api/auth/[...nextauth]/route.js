@@ -64,6 +64,7 @@ export const authOptions = NextAuth({
         });
         return session;
       }
+      session.user.name = FindUser.name;
       session.user.username = FindUser.username;
       session.user.UPI_ID = FindUser.UPI_ID;
       session.user.Profilepic = FindUser.Profilepic;
