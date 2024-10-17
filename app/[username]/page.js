@@ -116,7 +116,7 @@ const Page = ({ params }) => {
         setLoading(false);
       });
     }
-  }, [Userdata]);
+  }, [Projects]);
 
   return Successfull ? (
     <div className="flex flex-col">
