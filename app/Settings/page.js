@@ -65,7 +65,7 @@ const Page = () => {
                   Response = await Response.json();
                   if (Response.success) {
                     toast.success("Profile Updated Successfully");
-                    window.location.href = `/`;
+                    window.location.href = `/${FormDetails.username}`;
                   }
                 }}
                 className="flex flex-col md:w-[50%] mx-auto items-center gap-3"

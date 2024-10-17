@@ -126,7 +126,7 @@ const Page = ({ params }) => {
         projectid={ProjectID}
         setProjects={setProjects}
       />
-      <div className="Profile md:min-h-[60vh] min-h-[45vh] p-5">
+      <div className="Profile md:min-h-[60vh] min-h-[40vh] p-5">
         <div className="coverpic relative">
           <Image
             height={500}
@@ -270,15 +270,15 @@ const Page = ({ params }) => {
       <hr className="opacity-20" />
       <div className="Payments">
         <h1 className="text-center font-bold text-3xl my-3">
-          {Userdata.name}&apos;s Payments
+          {Userdata.name}&apos;s Fundings
         </h1>
         <div className="flex md:flex-row flex-col w-full min-h-[50vh] md:p-10 p-5 gap-8">
           <div className="Left md:w-[49%] md:min-h-0 min-h-56 border-dotted border-2 border-slate-600 rounded-lg md:p-10 p-5 bg-gray-900 ">
-            <h1 className="font-bold text-center text-2xl">Top Payments</h1>
+            <h1 className="font-bold text-center text-2xl">Top Fundings</h1>
             <div className="payments p-5 md:flex md:flex-col md:items-center md:gap-3">
               {Payments.length === 0 ? (
                 <h1 className="text-2xl font-bold text-center">
-                  No Payments Yet
+                  No Fundings Yet
                 </h1>
               ) : (
                 Payments.map((payment, index) => {
