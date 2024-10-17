@@ -11,20 +11,22 @@ async function GetProjects(user_email) {
     Projects = JSON.parse(JSON.stringify(Projects));
     return Projects;
   } catch (error) {
+    console.log(error);
+
     return { error: "Failed To Fetch The Projects" };
   }
 }
 async function GetProjectByProjectID(Project_id) {
-  // try {
-  await connectDB();
-  let MyProject = await Project.findOne({ _id: Project_id });
-  MyProject = JSON.parse(JSON.stringify(MyProject));
-  return MyProject;
-  // } catch (error) {
-  //   console.log(error);
+  try {
+    await connectDB();
+    let MyProject = await Project.findOne({ _id: Project_id });
+    MyProject = JSON.parse(JSON.stringify(MyProject));
+    return MyProject;
+  } catch (error) {
+    console.log(error);
 
-  // return { error: "Failed To Fetch The Project" };
-  // }
+    return { error: "Failed To Fetch The Project" };
+  }
 }
 async function AddProject(
   user_email,
@@ -40,9 +42,11 @@ async function AddProject(
     await connectDB();
     project_image = project_image.get("ProjectPicture");
     project_image = await UploadImage(project_image, user_email);
-    project_image = project_image.secure_url
-      .split("upload/")
-      .join("upload/f_auto,q_auto/");
+    console.log(project_image);
+
+    // project_image = project_image.secure_url
+    //   .split("upload/")
+    //   .join("upload/f_auto,q_auto/");
     let NewProject = new Project({
       user_email,
       project_name,
@@ -103,6 +107,8 @@ async function EditProject(
     });
     return { success: "Project Updated Successfully" };
   } catch (error) {
+    console.log(error);
+
     return { error: "Failed To Update The Project" };
   }
 }
@@ -117,6 +123,8 @@ async function DeleteProject(Project_id) {
     await Project.findByIdAndDelete(Project_id);
     return { success: "Project Deleted Successfully" };
   } catch (error) {
+    console.log(error);
+
     return { error: "Failed To Delete The Project" };
   }
 }
