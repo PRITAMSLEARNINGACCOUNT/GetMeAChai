@@ -77,7 +77,6 @@ const Page = ({ params }) => {
             return 0;
           } else {
             let AllPayments = await GetPayments(Userdata.email);
-            console.log(AllPayments);
 
             setPayments([...AllPayments]);
             toast.success("Payment Successful");
@@ -99,7 +98,6 @@ const Page = ({ params }) => {
 
   async function handle() {
     let { success, data } = await fetchData(params);
-    console.log("Data", data);
 
     if (success) {
       setSuccessfull(true);
@@ -107,7 +105,6 @@ const Page = ({ params }) => {
       let UserProjects = await GetProjects(data.email);
       setProjects([...UserProjects]);
     }
-    setLoading(false);
   }
   useEffect(() => {
     handle();
@@ -115,9 +112,8 @@ const Page = ({ params }) => {
   useEffect(() => {
     if (Userdata.email) {
       GetPayments(Userdata.email).then((data) => {
-        console.log(data);
-
         setPayments([...data]);
+        setLoading(false);
       });
     }
   }, [Userdata]);
@@ -178,8 +174,8 @@ const Page = ({ params }) => {
               >
                 <Image
                   src={project.project_image}
-                  height={50}
-                  width={50}
+                  height={500}
+                  width={500}
                   className="object-cover object-center w-full rounded-md max-h-[50%]"
                   alt={project.project_name}
                 />

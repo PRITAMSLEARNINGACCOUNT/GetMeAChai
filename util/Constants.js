@@ -18,6 +18,5 @@ async function getpublic_id(secure_url) {
     secure_url = "GetMeAChai/" + secure_url;
     await DeleteImage(secure_url);
   }
-  console.log(secure_url);
 }
 export { getpublic_id };

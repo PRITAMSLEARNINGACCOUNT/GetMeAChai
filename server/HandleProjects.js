@@ -11,8 +11,6 @@ async function GetProjects(user_email) {
     Projects = JSON.parse(JSON.stringify(Projects));
     return Projects;
   } catch (error) {
-    console.log(error);
-
     return { error: "Failed To Fetch The Projects" };
   }
 }
@@ -23,8 +21,6 @@ async function GetProjectByProjectID(Project_id) {
     MyProject = JSON.parse(JSON.stringify(MyProject));
     return MyProject;
   } catch (error) {
-    console.log(error);
-
     return { error: "Failed To Fetch The Project" };
   }
 }
@@ -42,7 +38,6 @@ async function AddProject(
     await connectDB();
     project_image = project_image.get("ProjectPicture");
     project_image = await UploadImage(project_image, user_email);
-    console.log(project_image);
 
     project_image = project_image.secure_url
       .split("upload/")
@@ -58,8 +53,6 @@ async function AddProject(
     NewProject = JSON.parse(JSON.stringify(NewProject));
     return NewProject;
   } catch (error) {
-    console.log(error);
-
     return { error: "Failed To Add The Project" };
   }
 }
@@ -80,8 +73,6 @@ async function EditProject(
       return { error: "Project Not Founded" };
     }
     if (project_image) {
-      console.log("Project Image Founded");
-
       await getpublic_id(ProjectData.project_image);
       const ImageUploadResult = await UploadImage(
         project_image.get("ProjectPicture"),
@@ -107,8 +98,6 @@ async function EditProject(
     });
     return { success: "Project Updated Successfully" };
   } catch (error) {
-    console.log(error);
-
     return { error: "Failed To Update The Project" };
   }
 }
@@ -123,8 +112,6 @@ async function DeleteProject(Project_id) {
     await Project.findByIdAndDelete(Project_id);
     return { success: "Project Deleted Successfully" };
   } catch (error) {
-    console.log(error);
-
     return { error: "Failed To Delete The Project" };
   }
 }

@@ -40,7 +40,6 @@ export const authOptions = NextAuth({
           "http://localhost:3000/callback",
           params
         );
-        console.log("Received and validated tokens %j", tokenSet);
         res.end("success");
       },
     }),

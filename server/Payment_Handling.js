@@ -29,7 +29,6 @@ async function ValidatePayment(PID, OID, SIG) {
       SIG,
       process.env.RAZORPAY_SECRET
     );
-    console.log(Validation);
     return { Validation };
   } catch (error) {
     return { Error: "Payment Validation Error" };
@@ -64,7 +63,7 @@ async function GetPayments(email) {
   try {
     let Payments = await Payment.find({
       email,
-    });
+    }).limit(5);
     return JSON.parse(JSON.stringify(Payments));
   } catch (error) {
     return {

@@ -63,7 +63,6 @@ const Page = () => {
                     body: MyFormData,
                   });
                   Response = await Response.json();
-                  console.log(Response);
                   if (Response.success) {
                     toast.success("Profile Updated Successfully");
                     window.location.href = `/`;

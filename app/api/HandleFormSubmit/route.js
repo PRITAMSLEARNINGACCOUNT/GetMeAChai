@@ -54,7 +54,6 @@ async function MainHandler(req) {
     await User.findOneAndUpdate({ email }, UpdatedBody);
     return NextResponse.json({ success: true }, { status: 200 });
   } catch (error) {
-    console.log(error);
 
     return NextResponse.json({ error: error.message }, { status: 500 });
   }

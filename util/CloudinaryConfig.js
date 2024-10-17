@@ -28,7 +28,6 @@ async function UploadImage(File, name) {
   formData.append("timestamp", timestamp);
   formData.append("folder", "GetMeAChai");
   formData.append("public_id", public_id);
-  // console.log(formData);
   const uploadRes = await fetch(
     `https://api.cloudinary.com/v1_1/${process.env.CLOUDINARY_CLOUD_NAME}/image/upload`,
     {

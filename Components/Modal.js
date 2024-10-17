@@ -25,7 +25,6 @@ const Modal = ({ Hidden, Closemodal, projectid, setProjects }) => {
     const ProjectName = e.target.ProjectName.value;
     const ProjectLink = e.target.ProjectLink.value;
     const ProjectPicture = e.target.ProjectPicture.files[0];
-    console.log(ProjectDesc, ProjectName, ProjectLink, ProjectPicture);
 
     let ProjectImage = new FormData();
     ProjectImage.append("ProjectPicture", ProjectPicture);
