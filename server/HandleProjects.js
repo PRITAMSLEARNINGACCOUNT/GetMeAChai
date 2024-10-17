@@ -44,9 +44,9 @@ async function AddProject(
     project_image = await UploadImage(project_image, user_email);
     console.log(project_image);
 
-    // project_image = project_image.secure_url
-    //   .split("upload/")
-    //   .join("upload/f_auto,q_auto/");
+    project_image = project_image.secure_url
+      .split("upload/")
+      .join("upload/f_auto,q_auto/");
     let NewProject = new Project({
       user_email,
       project_name,
