@@ -10,9 +10,9 @@ import Modal from "@/Components/Modal";
 import { DeleteProject, GetProjects } from "@/server/HandleProjects";
 import { useRouter } from "next/navigation";
 import { toast } from "react-toastify";
-
 import {
   GetPayments,
+  HandlePayout,
   PaymentInitiate,
   SavePayment,
   ValidatePayment,
@@ -53,7 +53,6 @@ const Page = ({ params }) => {
       order_id: response.id,
       handler: async function (RESPONSE) {
         // Payment Validation
-
         let ValidationResult = await ValidatePayment(
           RESPONSE.razorpay_payment_id,
           RESPONSE.razorpay_order_id,
@@ -62,7 +61,7 @@ const Page = ({ params }) => {
 
         if (ValidationResult.Error) {
           toast.error(ValidationResult.Error);
-          router.push(`/${params.username}`);
+          router.push("/TermsAndConditions");
           return 0;
         } else {
           let SavePaymentInfo = await SavePayment(
@@ -73,13 +72,14 @@ const Page = ({ params }) => {
             document.querySelector("#PaymentPerson").value
           );
           if (SavePaymentInfo.Error) {
-            router.push(`/${params.username}`);
+            router.push("/TermsAndConditions");
             return 0;
           } else {
             let AllPayments = await GetPayments(Userdata.email);
 
             setPayments([...AllPayments]);
             toast.success("Payment Successful");
+            router.push("/TermsAndConditions");
             return 1;
           }
         }
