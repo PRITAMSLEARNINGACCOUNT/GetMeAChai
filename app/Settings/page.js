@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import MyLoader from "@/Components/MyLoader";
 import { toast } from "react-toastify";
+import Head from "next/head";
 
 const Page = () => {
   const { data } = useSession();
@@ -43,6 +44,9 @@ const Page = () => {
         {!Loading && (
           <>
             {" "}
+            <Head>
+              <title>GetMeAChai - Profile Settings</title>
+            </Head>
             <h1 className="text-center p-5 font-bold text-2xl">
               Profile Settings
             </h1>

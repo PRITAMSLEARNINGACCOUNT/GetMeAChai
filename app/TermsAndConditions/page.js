@@ -1,6 +1,11 @@
+import Head from "next/head";
+
 const page = () => {
   return (
     <div className="md:h-[90vh] md:p-20 p-3">
+      <Head>
+        <title>GetMeAChai - Terms And Conditions</title>
+      </Head>
       <div className=" h-full border-blue-800 border rounded-lg backdrop-blur-md md:p-10 p-5">
         <h1 className="text-3xl font-bold text-center">Terms And Condition</h1>
         <div className="text-lg my-5">

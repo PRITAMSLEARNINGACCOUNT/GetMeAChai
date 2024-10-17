@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import MyLoader from "@/Components/MyLoader";
+import Head from "next/head";
 const Login = () => {
   const { data } = useSession();
   const router = useRouter();
@@ -16,6 +17,9 @@ const Login = () => {
 
   return (
     <div className=" flex flex-col justify-center items-center p-10">
+      <Head>
+        <title>GetMeAChai - Login</title>
+      </Head>
       <h1 className="font-bold text-3xl text-center">
         Login Into Your Account
       </h1>

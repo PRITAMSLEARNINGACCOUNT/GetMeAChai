@@ -18,6 +18,7 @@ import {
   ValidatePayment,
 } from "@/server/Payment_Handling";
 import Script from "next/script";
+import Head from "next/head";
 const Page = ({ params }) => {
   const router = useRouter();
   const [Successfull, setSuccessfull] = useState(false);
@@ -120,6 +121,9 @@ const Page = ({ params }) => {
 
   return Successfull ? (
     <div className="flex flex-col">
+      <Head>
+        <title>GetMeAChai - {Userdata.name}</title>
+      </Head>
       <Modal
         Hidden={ShowModal}
         Closemodal={setShowModal}
