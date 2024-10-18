@@ -62,7 +62,7 @@ const Page = () => {
                   MyFormData.append("UPI_ID", FormDetails.UPI_ID);
                   MyFormData.append("Profilepic", e.target.Profilepic.files[0]);
                   MyFormData.append("Coverpic", e.target.Coverpic.files[0]);
-                  let Response = await fetch(`${process.env.NEXT_PUBLIC_URL}/api/HandleFormSubmit`, {
+                  let Response = await fetch(`/api/HandleFormSubmit`, {
                     method: "POST",
                     body: MyFormData,
                   });

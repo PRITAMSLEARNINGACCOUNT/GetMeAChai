@@ -98,6 +98,8 @@ async function EditProject(
     });
     return { success: "Project Updated Successfully" };
   } catch (error) {
+    console.log(error);
+
     return { error: "Failed To Update The Project" };
   }
 }
@@ -112,6 +114,8 @@ async function DeleteProject(Project_id) {
     await Project.findByIdAndDelete(Project_id);
     return { success: "Project Deleted Successfully" };
   } catch (error) {
+    console.log(error);
+
     return { error: "Failed To Delete The Project" };
   }
 }
