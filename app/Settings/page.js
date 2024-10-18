@@ -62,14 +62,19 @@ const Page = () => {
                   MyFormData.append("UPI_ID", FormDetails.UPI_ID);
                   MyFormData.append("Profilepic", e.target.Profilepic.files[0]);
                   MyFormData.append("Coverpic", e.target.Coverpic.files[0]);
-                  let Response = await fetch(`/api/HandleFormSubmit`, {
-                    method: "POST",
-                    body: MyFormData,
-                  });
-                  Response = await Response.json();
-                  if (Response.success) {
-                    toast.success("Profile Updated Successfully");
-                    window.location.href = `/${FormDetails.username}`;
+                  try {
+                    let Response = await fetch(`/api/HandleFormSubmit`, {
+                      method: "POST",
+                      body: MyFormData,
+                    });
+                    Response = await Response.json();
+                    if (Response.success) {
+                      toast.success("Profile Updated Successfully");
+                      window.location.href = `/${FormDetails.username}`;
+                    }
+                  } catch (error) {
+                    console.error(error);
+                    toast.error("Something went wrong");
                   }
                 }}
                 className="flex flex-col md:w-[50%] mx-auto items-center gap-3"
