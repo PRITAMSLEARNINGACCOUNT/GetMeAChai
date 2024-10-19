@@ -25,7 +25,11 @@ const Modal = ({ Hidden, Closemodal, projectid, setProjects }) => {
     const ProjectName = e.target.ProjectName.value;
     const ProjectLink = e.target.ProjectLink.value;
     const ProjectPicture = e.target.ProjectPicture.files[0];
-
+    if (ProjectLink.length > 0 && !ProjectLink.includes("http")) {
+      toast.error("Please enter a valid URL");
+      setLoading(false);
+      return;
+    }
     let ProjectImage = new FormData();
     ProjectImage.append("ProjectPicture", ProjectPicture);
     let ProductAddResponse;

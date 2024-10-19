@@ -40,8 +40,12 @@ async function MainHandler(req) {
       email,
       UPI_ID,
     };
+    console.log(FoundedUser.username);
+    console.log(username);
 
-    if (!username === FoundedUser.username) {
+    if (!(username === FoundedUser.username)) {
+      console.log("inside");
+      
       if (await User.findOne({ username })) {
         return NextResponse.json(
           {

@@ -55,6 +55,15 @@ const Page = () => {
                 onSubmit={async (e) => {
                   setFormLoading(true);
                   e.preventDefault();
+                  if (
+                    FormDetails.username.length === 0 ||
+                    FormDetails.username.includes(" ")
+                  ) {
+                    toast.error("Username cannot be empty or contain spaces");
+                    setFormLoading(false);
+                    return;
+                  }
+
                   const MyFormData = new FormData();
                   MyFormData.append("name", FormDetails.name);
                   MyFormData.append("username", FormDetails.username);
@@ -71,6 +80,10 @@ const Page = () => {
                     if (Response.success) {
                       toast.success("Profile Updated Successfully");
                       window.location.href = `/${FormDetails.username}`;
+                    }
+                    if (Response.error) {
+                      toast.error(Response.error);
+                      setFormLoading(false);
                     }
                   } catch (error) {
                     console.error(error);
